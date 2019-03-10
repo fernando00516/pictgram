@@ -26,8 +26,10 @@
              <% end %>
            </li>
            <li>
-             <%= link_to "#" do %>
+             <% if logged_in? %>
+             <%= link_to new_topic_path do %>
                <%= image_tag "icons/camera.png" %>
+             <% end %>
              <% end %>
            </li>
            <li>

@@ -5,7 +5,8 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all.includes(:favorite_users)
+    @comments = @topic.comments
   end
 
   def show

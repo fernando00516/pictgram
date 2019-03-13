@@ -6,10 +6,11 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.all.includes(:favorite_users)
-    @topic = Topic.find_by(params[:id])
   end
 
   def show
+    @topic = Topic.find_by(id: params[:id])
+    @comments = @topic.comments
   end
 
   def create

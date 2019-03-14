@@ -16,7 +16,8 @@
             <%= comment.content %>
           </div>
           <% end %>
-          <%= form_for comment do |f| %>
+          <%= form_for(@comment, :url => {:controller => :comments, :action => :create}) do |f| %>
+          <%= f.hidden_field :topic_id, value: @topic.id %>
             <%= f.text_field :content %>
             <%= f.submit 'コメントする'%>
           <% end %>

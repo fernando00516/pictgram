@@ -4,14 +4,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     @comment.user_id = current_user.id
-    @comment.topic_id = params[:topic_id]
+    binding.pry
     if @comment.save
-      redirect_to topic_path(:id), success:"コメントを追加しました"
+      redirect_to topic_path(@comment.topic.id), success: 'コメントを追加しました'
     end
   end
 
   private
   def comment_params
-  params.require(:comment).permit(:content)
+  params.require(:comment).permit(:content,:topic_id)
   end
 end

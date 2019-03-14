@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
 
     @comment.user_id = current_user.id
-    binding.pry
     if @comment.save
       redirect_to topic_path(@comment.topic.id), success: 'コメントを追加しました'
     end
